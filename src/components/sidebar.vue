@@ -3,11 +3,13 @@
         <ul>
             <li v-for="list in ulList" :key="list.id">
                 <div :class="['sigle_ul',firstUl == list.url ? 'active' : '']" @click="hrefTo(list.url)">{{list.name}}</div>
-                <ul>
-                    <li v-for="item in list.child" :key="item.id" :class="{active:secondUl == item.url}">
-                        <a :href="item.url" @click.prevent.stop="hrefTo(item.url)">{{item.name}}</a>
-                    </li>
-                </ul>
+                <transition name="trans_ul">
+                    <ul>
+                        <li v-for="item in list.child" :key="item.id" :class="{active:secondUl == item.url}">
+                            <a :href="item.url" @click.prevent.stop="hrefTo(item.url)">{{item.name}}</a>
+                        </li>
+                    </ul>
+                </transition>
             </li>
         </ul>
     </div>
@@ -70,7 +72,6 @@ ul{
     padding: 0;
     list-style: none;
     cursor: pointer;
-
     a{
         color: black;
         text-decoration: none
@@ -79,8 +80,24 @@ ul{
 .sigle_ul, .sigle_ul + ul li{
     padding:10px 20px;
 }
-.sigle_ul + ul li{
-    padding-left: 50px;
+.sigle_ul + ul{
+    height:auto;
+    overflow: hidden;
+    li{
+        height: 0px;
+        padding: 0px!important;
+
+        a{
+            padding: 10px 20px 10px 50px;
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    }
+}
+.sigle_ul.active + ul > li{
+    height:41px;
+    transition: height .4s;
 }
 </style>
 

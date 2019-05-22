@@ -43,7 +43,6 @@ export default {
 .content-body{
     width: calc(100% - #{$sideWidth + $borderWidth});
     height:calc(100% - #{$headHeight});
-    display: inline-block;
     float: right;
 }
 .head{
