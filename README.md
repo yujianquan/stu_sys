@@ -29,3 +29,14 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 3，Vue使用transition的时候，不能同时设置height与display两个属性，严格意义来讲，这个算transition的锅
 
 4，Node跨域成功，前端报错跨域出错，但是network却拿到值了：
+      在config下面的index.js里添加
+      proxyTable: {
+      '/api':{
+        target:"http://127.0.0.1:3000/",
+        changeOrigin:true,
+        pathRewrite:{
+          '^/api':''
+        }
+      }
+    },
+
