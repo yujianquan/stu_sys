@@ -39,4 +39,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
         }
       }
     },
+    然后发送请求的时候加上"/api"，例如"/api/users/userinfo"
 
