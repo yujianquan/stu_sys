@@ -24,7 +24,7 @@ export default {
         }
     },
     created(){
-        this.axios.get("http://127.0.0.1:3000/users")
+        this.axios.post("/api/users/userinfo")
         .then((response) => {
             console.log(response)
         }).catch((error) => {
