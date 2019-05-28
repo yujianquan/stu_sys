@@ -40,4 +40,17 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
       }
     },
     然后发送请求的时候加上"/api"，例如"/api/users/userinfo"
-
+    
+   4，解决vue打包出错的方法
+        1，config下面修改为assetsPublicPath: './',
+        2，build下面的utils.js修改
+        if (options.extract) {
+            return ExtractTextPlugin.extract({
+              use: loaders,
+              fallback: 'vue-style-loader',
+              publicPath:"../../",
+            })
+          } else {
+            return ['vue-style-loader'].concat(loaders)
+          }
+        }
